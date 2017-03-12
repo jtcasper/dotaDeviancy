@@ -8,10 +8,13 @@ requesturl = 'https://api.opendota.com/api/'
 playerdata = {}
 
 enduser = 79944981
+userstr = input('> How many users would you like to search? ')
+usernum = int(userstr)
+filestr = 'jsondump' + str(time.time()) + 'txt'
 
-f = open('jsondump.txt', 'w')
+f = open(filestr, 'w')
 
-for player in range(enduser-1000, enduser):
+for player in range(enduser - (usernum - 1), enduser):
     time.sleep(1)
     cloudstring = requests.get(requesturl + 'players/' + str(player) + '/wordcloud')
     if (cloudstring == None):
